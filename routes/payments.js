@@ -5,7 +5,7 @@ const keys = require("../config/keys");
 const stripe = require("stripe")(keys.stripeSecretKey);
 const requireLogin = require("../middleware/requireLogin");
 
-router.post("/api/stripe", async (req, res) => {
+router.post("/api/stripe", requireLogin, async (req, res) => {
   try {
     const charge = await stripe.charges.create({
       amount: 500,
