@@ -18,20 +18,14 @@ const Navbar = ({ auth: { userData }, logout }) => {
     </Fragment>
   );
 
-  const guestLinks = (
-    <li>
-      <a href="/auth/google">Login With Google</a>
-    </li>
-  );
-
   return (
     <nav>
-      <div className="nav-wrapper blue darken-4">
+      <div className="nav-wrapper red darken-4">
         <div className="container">
           <Link to={"/surveys"} className="left brand-logo">
             pollster
           </Link>
-          <ul className="right">{userData ? authLinks : guestLinks}</ul>
+          <ul className="right">{userData && authLinks}</ul>
         </div>
       </div>
     </nav>
