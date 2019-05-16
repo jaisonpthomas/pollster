@@ -7,9 +7,16 @@ import { handleToken } from "../actions/auth";
 const StripeWrapper = ({ credits, handleToken }) => {
   return (
     <Fragment>
+      <h3>Pollster Credits</h3>
       <p>
-        <strong>Pollster Credits:</strong> {credits}
+        <em>
+          Each poll costs 1 credit, no matter how many recipients are added.
+        </em>
       </p>
+      <p className="blue-text">
+        <strong>My Pollster Credits:</strong> {credits}
+      </p>
+
       <StripeCheckout
         name="pollster"
         description="$5 for 5 email credits"

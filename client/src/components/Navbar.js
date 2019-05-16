@@ -8,7 +8,10 @@ const Navbar = ({ auth: { userData }, logout }) => {
   const authLinks = (
     <Fragment>
       <li>
-        <Link to="/surveys/new">New Survey</Link>
+        <Link to="/polls/new">New Poll</Link>
+      </li>
+      <li>
+        <Link to="/credits">Credits</Link>
       </li>
       <li>
         <Link onClick={logout} to="/">
@@ -22,7 +25,7 @@ const Navbar = ({ auth: { userData }, logout }) => {
     <nav>
       <div className="nav-wrapper red darken-4">
         <div className="container">
-          <Link to={"/surveys"} className="left brand-logo">
+          <Link to={"/polls"} className="left brand-logo">
             pollster
           </Link>
           <ul className="right">{userData && authLinks}</ul>

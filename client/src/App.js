@@ -9,7 +9,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Dashboard from "./components/Dashboard";
-import SurveyForm from "./components/SurveyForm";
+import PollForm from "./components/PollForm";
+import StripeWrapper from "./components/StripeWrapper";
 
 import { fetchUser } from "./actions/auth";
 
@@ -25,8 +26,9 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <div className="container">
             <Switch>
-              <PrivateRoute exact path="/surveys" component={Dashboard} />
-              <PrivateRoute exact path="/surveys/new" component={SurveyForm} />
+              <PrivateRoute exact path="/polls" component={Dashboard} />
+              <PrivateRoute exact path="/polls/new" component={PollForm} />
+              <PrivateRoute path="/credits" component={StripeWrapper} />
             </Switch>
           </div>
         </div>

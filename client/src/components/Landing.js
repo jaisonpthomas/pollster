@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const Landing = ({ auth: { userData } }) => {
-  if (userData) return <Redirect to="/surveys" />;
+  if (userData) return <Redirect to="/polls" />;
   return (
     <div className="landing">
       <div className="dark-overlay">
@@ -12,9 +12,9 @@ const Landing = ({ auth: { userData } }) => {
           <h1>pollster </h1>
           <h6>Send polls via email to track your campaign's progress</h6>
           <br />
-          <button className="btn grey darken-3 white-text">
-            <a href="/auth/google">Login With Google</a>
-          </button>
+          <a className="btn red darken-3" href="/auth/google">
+            Login With Google
+          </a>
         </div>
       </div>
     </div>

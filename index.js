@@ -5,7 +5,7 @@ const passport = require("passport");
 const keys = require("./config/keys");
 
 require("./models/User");
-require("./models/Survey");
+require("./models/Poll");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
@@ -26,7 +26,9 @@ app.use(passport.session());
 
 // Routes
 app.use("/auth", require("./routes/auth"));
-app.use("/payments", require("./routes/payments"));
+app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/payments", require("./routes/api/payments"));
+app.use("/api/polls", require("./routes/api/polls"));
 
 if (process.env.NODE_ENV === "production") {
   // static assets
@@ -39,4 +41,4 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+app.listen(PORT, () => console.log("Server running"));
