@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../actions/auth";
@@ -8,15 +8,15 @@ const Navbar = ({ auth: { userData }, logout }) => {
   const authLinks = (
     <Fragment>
       <li>
-        <Link to="/polls/new">New Poll</Link>
+        <NavLink to="/polls/new">New Poll</NavLink>
       </li>
       <li>
-        <Link to="/credits">Credits</Link>
+        <NavLink to="/credits">Credits</NavLink>
       </li>
       <li>
-        <Link onClick={logout} to="/">
+        <NavLink onClick={logout} to="/">
           Logout
-        </Link>
+        </NavLink>
       </li>
     </Fragment>
   );
@@ -25,9 +25,9 @@ const Navbar = ({ auth: { userData }, logout }) => {
     <nav>
       <div className="nav-wrapper red darken-4">
         <div className="container">
-          <Link to={"/polls"} className="left brand-logo">
+          <NavLink to={"/polls"} className="left brand-logo">
             pollster
-          </Link>
+          </NavLink>
           <ul className="right">{userData && authLinks}</ul>
         </div>
       </div>

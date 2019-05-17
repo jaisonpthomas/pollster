@@ -1,17 +1,37 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import PollItem from "./PollItem";
+import { connect } from "react-redux";
 
-const Dashboard = () => {
+import PollItem from "./PollItem";
+import { getPolls } from "../actions/poll";
+
+const Dashboard = ({ polls, getPolls }) => {
+  useEffect(() => {
+    getPolls();
+  }, []);
+
   return (
     <Fragment>
-      <PollItem repVotes={134} demVotes={80} />
-      <PollItem repVotes={16} demVotes={25} />
-      <PollItem repVotes={3} demVotes={98} />
+      <h3>Dashboard</h3>
+      {polls.map(poll => (
+        <PollItem poll={poll} key={poll._id} />
+      ))
+      //)
+      }
     </Fragment>
   );
 };
 
-Dashboard.propTypes = {};
+Dashboard.propTypes = {
+  polls: PropTypes.array.isRequired,
+  getPolls: PropTypes.func.isRequired
+};
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  polls: state.poll.polls
+});
+
+export default connect(
+  mapStateToProps,
+  { getPolls }
+)(Dashboard);
